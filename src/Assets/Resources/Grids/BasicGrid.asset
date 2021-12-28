@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe3cb547ae1645b4aa6d4c11256aa287, type: 3}
+  m_Name: BasicGrid
+  m_EditorClassIdentifier: 
+  width: 50
+  height: 40
+  startPosition: {x: 0, y: 0, z: 1}
+  enemies:
+  - {fileID: 4553549400362695774, guid: e880651439ba18d4aaa06b3c6779ceb8, type: 3}
+  tilePrefab: {fileID: 1926222453670255159, guid: bc1cb85ba720d8147985f3ffc3745e52,
+    type: 3}
+  wallData: {fileID: 11400000, guid: 32059e9627419d249aa107f921fc753b, type: 2}

@@ -1,0 +1,11 @@
+In inspector
+1. Sprite mode - multiple
+2. pixel per unit 32
+3. kliknij na sprite editor - jeśli wyskoczy okienko daj apply\
+
+In sprite editor
+1. W lewym górnym rogu slice
+2. Grid by cell size
+3.pixel size: 32x32
+4. slice
+5. apply
