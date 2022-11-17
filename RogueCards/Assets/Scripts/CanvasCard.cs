@@ -117,7 +117,7 @@ public class CanvasCard : MonoBehaviour, IDragHandler, IPointerUpHandler, IPoint
 
     public void SetDefaultPosition()
     {
-        GameController.Instance.player.HideHand();
-        GameController.Instance.player.ShowHand();
+        gameObject.SetActive(false);
+        gameObject.SetActive(true);
     }
 }
