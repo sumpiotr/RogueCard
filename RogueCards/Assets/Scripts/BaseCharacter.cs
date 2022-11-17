@@ -27,8 +27,7 @@ public class BaseCharacter : MonoBehaviour, ISpawnable, ICharacter
     public Vector2 position { get  { return transform.position; } set { } }
 
     private CharacterStats _stats;
-    private Vector2 _destination;
-    private ICharacter _target;
+
 
     public CharacterStats stats { get => _stats; set => _stats = value; }
 

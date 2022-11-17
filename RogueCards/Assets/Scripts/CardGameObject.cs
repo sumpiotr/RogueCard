@@ -46,7 +46,7 @@ public class CardGameObject : MonoBehaviour
         string desc = cardData.description;
         foreach (string s in arguments)
         {
-            desc = desc.Replace("[" + s + "]", "<b>" + GameController.instance.player.stats.getActualStat(s).ToString() + "</b>");
+            desc = desc.Replace("[" + s + "]", "<b>" + GameController.Instance.player.stats.getActualStat(s).ToString() + "</b>");
         }
         return desc;
     }
@@ -54,57 +54,57 @@ public class CardGameObject : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        if (isMoving || GameController.instance.isCardSelected || GameController.instance.player.busy) return;
+        if (isMoving || GameController.Instance.isCardSelected || GameController.Instance.player.busy) return;
         //FindObjectOfType<CardPreview>().ShowCardDescription(this);
-        if (GameController.instance.player.preparedCard != null || !GameController.instance.playerTurn) return;
+        if (GameController.Instance.player.preparedCard != null || !GameController.Instance.playerTurn) return;
         StopAllCoroutines();
         StartCoroutine("SelectedAnimation");
     }
 
     private void OnMouseExit()
     {
-        if (isMoving || GameController.instance.isCardSelected) return;
+        if (isMoving || GameController.Instance.isCardSelected) return;
         FindObjectOfType<CardPreview>().HideCardPreview();
-        if (GameController.instance.player.preparedCard != null || !GameController.instance.playerTurn || GameController.instance.player.busy) return;
+        if (GameController.Instance.player.preparedCard != null || !GameController.Instance.playerTurn || GameController.Instance.player.busy) return;
         StopAllCoroutines();
         StartCoroutine("UnselectedAnimation");
     }
 
     private void OnMouseDown()
     {
-        if (GameController.instance.player.preparedCard != null || !GameController.instance.playerTurn || GameController.instance.player.busy) return;
+        if (GameController.Instance.player.preparedCard != null || !GameController.Instance.playerTurn || GameController.Instance.player.busy) return;
         isMoving = true;
         StopAllCoroutines();
-        GameController.instance.isCardSelected = true;
+        GameController.Instance.isCardSelected = true;
         FindObjectOfType<CardPreview>().HideCardPreview();
     }
 
     private void OnMouseDrag()
     {
-        if (GameController.instance.player.preparedCard != null || !GameController.instance.playerTurn || GameController.instance.player.busy) return;
+        if (GameController.Instance.player.preparedCard != null || !GameController.Instance.playerTurn || GameController.Instance.player.busy) return;
         Vector2 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         transform.position = new Vector3(mouseWorldPosition.x, mouseWorldPosition.y, -1);
     }
 
     private void OnMouseUp()
     {
-        if (!GameController.instance.playerTurn || GameController.instance.player.busy) return;
-        if (GameController.instance.player.preparedCard != null) 
+        if (!GameController.Instance.playerTurn || GameController.Instance.player.busy) return;
+        if (GameController.Instance.player.preparedCard != null) 
         {
-            GameController.instance.player.Undo();
+            GameController.Instance.player.Undo();
             return; 
         }
         isMoving = false;
-        if (transform.localPosition.x < -5 || transform.localPosition.x > -3 + GameController.instance.player.getHandSize() * 2
+        if (transform.localPosition.x < -5 || transform.localPosition.x > -3 + GameController.Instance.player.getHandSize() * 2
             || transform.position.y > transform.parent.transform.position.y + 1) 
         {
             //GameController.instance.player.PlayCard(this);
-            GameController.instance.isCardSelected = false;
+            GameController.Instance.isCardSelected = false;
             StopAllCoroutines();
             StartCoroutine("UnselectedAnimation");
             return;
         }
-        GameController.instance.isCardSelected = false;
+        GameController.Instance.isCardSelected = false;
         transform.localPosition = defaultPosition;
     }
 
