@@ -1,2 +1,3 @@
 # RogueCard
-This is a roguelike card game that I'm currently working on. I have started writing this not so long ago so it's not even a demo version. For now, it has only some very basic mechanics that can be changed in the future. I'm putting this here because I think that it shows my current skills well.
+
+This is a roguelike card game that I'm worked for a while year ago. I have now some free time so I return to it and I'm optimalizatin it and reworking using experience that I gain through last year
