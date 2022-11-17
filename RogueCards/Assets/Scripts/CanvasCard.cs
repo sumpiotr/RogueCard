@@ -21,8 +21,6 @@ public class CanvasCard : MonoBehaviour, IDragHandler, IPointerUpHandler, IPoint
 
     bool _isMoving = false;
 
-    Vector2 _defaultPosition;
-
     private string getDynamicDescription(string data)
     {
         string tmp = data;
@@ -52,7 +50,6 @@ public class CanvasCard : MonoBehaviour, IDragHandler, IPointerUpHandler, IPoint
         cardTittle.text = cardData.cardName;
         cardDescription = getDynamicDescription(cardData.description);
         description.text = cardDescription;
-        _defaultPosition = transform.localPosition;
     }
 
     #region interfaces
@@ -103,7 +100,7 @@ public class CanvasCard : MonoBehaviour, IDragHandler, IPointerUpHandler, IPoint
         }
 
         GameController.Instance.isCardSelected = false;
-        transform.localPosition = _defaultPosition;
+        SetDefaultPosition();
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -116,14 +113,11 @@ public class CanvasCard : MonoBehaviour, IDragHandler, IPointerUpHandler, IPoint
     }
     #endregion
     
-    public void UpdateDefaultPosition()
-    {
-        _defaultPosition = transform.localPosition;
-    }
 
 
     public void SetDefaultPosition()
     {
-        transform.localPosition = _defaultPosition;
+        GameController.Instance.player.HideHand();
+        GameController.Instance.player.ShowHand();
     }
 }

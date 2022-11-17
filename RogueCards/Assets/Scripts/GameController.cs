@@ -86,7 +86,6 @@ public class GameController : MonoBehaviour
 
     public void SpawnExit(Vector2 position) 
     {
-        Debug.Log(position); 
         Tile tile = grid.GetTileByPosition(position);
         GameObject door =  Instantiate(exitDoor, tile.transform);
         door.transform.localPosition = new Vector3(0, 0, -1);

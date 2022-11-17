@@ -106,8 +106,6 @@ public class PlayerController : BaseCharacter
         if (cardObject == null) return;
         cardObject.InitializeCard(card);
         cardObject.gameObject.SetActive(true);
-        cardObject.gameObject.transform.localPosition = new Vector2(0 - ((CanvasCard.WIDTH * 1.5f) * 2) + (hand.Count - 1) * (CanvasCard.WIDTH * 1.5f), 0);
-        cardObject.UpdateDefaultPosition();
     }
 
     public override Card DrawCard()
@@ -123,7 +121,6 @@ public class PlayerController : BaseCharacter
         CanvasCard cardObject = GetCardObject(card);
         if (cardObject == null) return;
         cardObject.gameObject.SetActive(false);
-        SetHandCardsPositions();
     }
 
     public override void DiscardAllCardsFromHand()
@@ -133,19 +130,8 @@ public class PlayerController : BaseCharacter
             CanvasCard cardObject = GetCardObject(card);
             if (cardObject == null) continue;
             cardObject.gameObject.SetActive(false);
-            cardObject.SetDefaultPosition();
         }
         base.DiscardAllCardsFromHand();
-    }
-
-    private void SetHandCardsPositions()
-    {
-        for (int i = 0; i < hand.Count; i++)
-        { 
-            CanvasCard cardObject = GetCardObject(hand[i]);
-            cardObject.gameObject.transform.localPosition = new Vector2(0 - ((CanvasCard.WIDTH*1.5f)*2) + i * (CanvasCard.WIDTH * 1.5f), 0);
-            cardObject.UpdateDefaultPosition();
-        }
     }
 
     public void PlayCard(CanvasCard cardGameobject)
